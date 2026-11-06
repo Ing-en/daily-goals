@@ -14,91 +14,96 @@ import net.runelite.client.hiscore.HiscoreSkill;
  * differently. The other activities have their own messages; see {@link Kind}.
  * <p>
  * Constant names are stored in saved goals, so don't rename them.
+ * <p>
+ * Names and icons come from the client's {@link HiscoreSkill} list, looked up by name while the
+ * plugin runs rather than referenced in code. RuneLite renames entries now and then (e.g.
+ * FRACTURED_ARCHIVE became THE_FRACTURED_ARCHIVE), and a missing one should only cost an icon,
+ * not stop the plugin from building.
  */
 enum Activity
 {
-	ABYSSAL_SIRE(HiscoreSkill.ABYSSAL_SIRE),
-	ALCHEMICAL_HYDRA(HiscoreSkill.ALCHEMICAL_HYDRA),
-	AMOXLIATL(HiscoreSkill.AMOXLIATL),
-	ARAXXOR(HiscoreSkill.ARAXXOR),
-	ARTIO(HiscoreSkill.ARTIO),
-	BARROWS_CHESTS(HiscoreSkill.BARROWS_CHESTS, "Barrows chest"),
-	BRUTUS(HiscoreSkill.BRUTUS),
-	BRYOPHYTA(HiscoreSkill.BRYOPHYTA),
-	CALLISTO(HiscoreSkill.CALLISTO),
-	CALVARION(HiscoreSkill.CALVARION),
-	CERBERUS(HiscoreSkill.CERBERUS),
-	CHAMBERS_OF_XERIC(HiscoreSkill.CHAMBERS_OF_XERIC),
-	CHAMBERS_OF_XERIC_CHALLENGE_MODE(HiscoreSkill.CHAMBERS_OF_XERIC_CHALLENGE_MODE),
-	CHAOS_ELEMENTAL(HiscoreSkill.CHAOS_ELEMENTAL),
-	CHAOS_FANATIC(HiscoreSkill.CHAOS_FANATIC),
-	COMMANDER_ZILYANA(HiscoreSkill.COMMANDER_ZILYANA),
-	CORPOREAL_BEAST(HiscoreSkill.CORPOREAL_BEAST),
-	CRAZY_ARCHAEOLOGIST(HiscoreSkill.CRAZY_ARCHAEOLOGIST),
-	DAGANNOTH_PRIME(HiscoreSkill.DAGANNOTH_PRIME),
-	DAGANNOTH_REX(HiscoreSkill.DAGANNOTH_REX),
-	DAGANNOTH_SUPREME(HiscoreSkill.DAGANNOTH_SUPREME),
-	DERANGED_ARCHAEOLOGIST(HiscoreSkill.DERANGED_ARCHAEOLOGIST),
-	DOOM_OF_MOKHAIOTL(HiscoreSkill.DOOM_OF_MOKHAIOTL),
-	DUKE_SUCELLUS(HiscoreSkill.DUKE_SUCELLUS),
-	FRACTURED_ARCHIVE(HiscoreSkill.FRACTURED_ARCHIVE),
-	GENERAL_GRAARDOR(HiscoreSkill.GENERAL_GRAARDOR),
-	GIANT_MOLE(HiscoreSkill.GIANT_MOLE),
-	GROTESQUE_GUARDIANS(HiscoreSkill.GROTESQUE_GUARDIANS),
-	HESPORI(HiscoreSkill.HESPORI),
-	KALPHITE_QUEEN(HiscoreSkill.KALPHITE_QUEEN),
-	KING_BLACK_DRAGON(HiscoreSkill.KING_BLACK_DRAGON),
-	KRAKEN(HiscoreSkill.KRAKEN),
-	KREEARRA(HiscoreSkill.KREEARRA),
-	KRIL_TSUTSAROTH(HiscoreSkill.KRIL_TSUTSAROTH),
-	LUNAR_CHESTS(HiscoreSkill.LUNAR_CHESTS, "Lunar Chest"),
-	MAD_ANGEL(HiscoreSkill.MAD_ANGEL),
-	MAGGOT_KING(HiscoreSkill.MAGGOT_KING),
-	MIMIC(HiscoreSkill.MIMIC),
-	NEX(HiscoreSkill.NEX),
-	NIGHTMARE(HiscoreSkill.NIGHTMARE),
-	PHOSANIS_NIGHTMARE(HiscoreSkill.PHOSANIS_NIGHTMARE),
-	OBOR(HiscoreSkill.OBOR),
-	PHANTOM_MUSPAH(HiscoreSkill.PHANTOM_MUSPAH),
-	SARACHNIS(HiscoreSkill.SARACHNIS),
-	SCORPIA(HiscoreSkill.SCORPIA),
-	SCURRIUS(HiscoreSkill.SCURRIUS),
-	SHELLBANE_GRYPHON(HiscoreSkill.SHELLBANE_GRYPHON),
-	SKOTIZO(HiscoreSkill.SKOTIZO),
-	SOL_HEREDIT(HiscoreSkill.SOL_HEREDIT),
-	SPINDEL(HiscoreSkill.SPINDEL),
-	TEMPOROSS(HiscoreSkill.TEMPOROSS),
-	THE_GAUNTLET(HiscoreSkill.THE_GAUNTLET),
-	THE_CORRUPTED_GAUNTLET(HiscoreSkill.THE_CORRUPTED_GAUNTLET),
-	THE_HUEYCOATL(HiscoreSkill.THE_HUEYCOATL),
-	THE_LEVIATHAN(HiscoreSkill.THE_LEVIATHAN),
-	THE_ROYAL_TITANS(HiscoreSkill.THE_ROYAL_TITANS, "Royal Titan"),
-	THE_WHISPERER(HiscoreSkill.THE_WHISPERER),
-	THEATRE_OF_BLOOD(HiscoreSkill.THEATRE_OF_BLOOD),
-	THEATRE_OF_BLOOD_HARD_MODE(HiscoreSkill.THEATRE_OF_BLOOD_HARD_MODE),
-	THERMONUCLEAR_SMOKE_DEVIL(HiscoreSkill.THERMONUCLEAR_SMOKE_DEVIL),
-	TOMBS_OF_AMASCUT(HiscoreSkill.TOMBS_OF_AMASCUT),
-	TOMBS_OF_AMASCUT_EXPERT(HiscoreSkill.TOMBS_OF_AMASCUT_EXPERT),
-	TZKAL_ZUK(HiscoreSkill.TZKAL_ZUK),
-	TZTOK_JAD(HiscoreSkill.TZTOK_JAD),
-	VARDORVIS(HiscoreSkill.VARDORVIS),
-	VENENATIS(HiscoreSkill.VENENATIS),
-	VETION(HiscoreSkill.VETION),
-	VORKATH(HiscoreSkill.VORKATH),
-	WINTERTODT(HiscoreSkill.WINTERTODT),
-	YAMA(HiscoreSkill.YAMA),
-	ZALCANO(HiscoreSkill.ZALCANO),
-	ZULRAH(HiscoreSkill.ZULRAH),
+	ABYSSAL_SIRE,
+	ALCHEMICAL_HYDRA,
+	AMOXLIATL,
+	ARAXXOR,
+	ARTIO,
+	BARROWS_CHESTS("Barrows chest"),
+	BRUTUS,
+	BRYOPHYTA,
+	CALLISTO,
+	CALVARION,
+	CERBERUS,
+	CHAMBERS_OF_XERIC,
+	CHAMBERS_OF_XERIC_CHALLENGE_MODE,
+	CHAOS_ELEMENTAL,
+	CHAOS_FANATIC,
+	COMMANDER_ZILYANA,
+	CORPOREAL_BEAST,
+	CRAZY_ARCHAEOLOGIST,
+	DAGANNOTH_PRIME,
+	DAGANNOTH_REX,
+	DAGANNOTH_SUPREME,
+	DERANGED_ARCHAEOLOGIST,
+	DOOM_OF_MOKHAIOTL,
+	DUKE_SUCELLUS,
+	FRACTURED_ARCHIVE,
+	GENERAL_GRAARDOR,
+	GIANT_MOLE,
+	GROTESQUE_GUARDIANS,
+	HESPORI,
+	KALPHITE_QUEEN,
+	KING_BLACK_DRAGON,
+	KRAKEN,
+	KREEARRA,
+	KRIL_TSUTSAROTH,
+	LUNAR_CHESTS("Lunar Chest"),
+	MAD_ANGEL,
+	MAGGOT_KING,
+	MIMIC,
+	NEX,
+	NIGHTMARE,
+	PHOSANIS_NIGHTMARE,
+	OBOR,
+	PHANTOM_MUSPAH,
+	SARACHNIS,
+	SCORPIA,
+	SCURRIUS,
+	SHELLBANE_GRYPHON,
+	SKOTIZO,
+	SOL_HEREDIT,
+	SPINDEL,
+	TEMPOROSS,
+	THE_GAUNTLET,
+	THE_CORRUPTED_GAUNTLET,
+	THE_HUEYCOATL,
+	THE_LEVIATHAN,
+	THE_ROYAL_TITANS("Royal Titan"),
+	THE_WHISPERER,
+	THEATRE_OF_BLOOD,
+	THEATRE_OF_BLOOD_HARD_MODE,
+	THERMONUCLEAR_SMOKE_DEVIL,
+	TOMBS_OF_AMASCUT,
+	TOMBS_OF_AMASCUT_EXPERT,
+	TZKAL_ZUK,
+	TZTOK_JAD,
+	VARDORVIS,
+	VENENATIS,
+	VETION,
+	VORKATH,
+	WINTERTODT,
+	YAMA,
+	ZALCANO,
+	ZULRAH,
 
-	CLUES_ALL("Clue scrolls (all)", Kind.CLUE_ANY, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Clue scrolls"),
-	CLUES_BEGINNER("Clue scrolls (beginner)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Beginner clues"),
-	CLUES_EASY("Clue scrolls (easy)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Easy clues"),
-	CLUES_MEDIUM("Clue scrolls (medium)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Medium clues"),
-	CLUES_HARD("Clue scrolls (hard)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Hard clues"),
-	CLUES_ELITE("Clue scrolls (elite)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Elite clues"),
-	CLUES_MASTER("Clue scrolls (master)", Kind.CLUE, HiscoreSkill.CLUE_SCROLL_ALL.getSpriteId(), "Master clues"),
-	RIFTS_CLOSED("Rifts closed (GotR)", Kind.RIFTS, HiscoreSkill.RIFTS_CLOSED.getSpriteId(), "Rifts closed"),
-	SEPULCHRE_FLOORS("Hallowed Sepulchre floors", Kind.SEPULCHRE, HiscoreSkill.AGILITY.getSpriteId(), "Sepulchre floors"),
+	CLUES_ALL("Clue scrolls (all)", Kind.CLUE_ANY, hiscoreSprite("CLUE_SCROLL_ALL"), "Clue scrolls"),
+	CLUES_BEGINNER("Clue scrolls (beginner)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Beginner clues"),
+	CLUES_EASY("Clue scrolls (easy)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Easy clues"),
+	CLUES_MEDIUM("Clue scrolls (medium)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Medium clues"),
+	CLUES_HARD("Clue scrolls (hard)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Hard clues"),
+	CLUES_ELITE("Clue scrolls (elite)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Elite clues"),
+	CLUES_MASTER("Clue scrolls (master)", Kind.CLUE, hiscoreSprite("CLUE_SCROLL_ALL"), "Master clues"),
+	RIFTS_CLOSED("Rifts closed (GotR)", Kind.RIFTS, hiscoreSprite("RIFTS_CLOSED"), "Rifts closed"),
+	SEPULCHRE_FLOORS("Hallowed Sepulchre floors", Kind.SEPULCHRE, hiscoreSprite("AGILITY"), "Sepulchre floors"),
 
 	OTHER("Other", Kind.KILL, SpriteID.SideIcons.COMBAT, null);
 
@@ -147,18 +152,22 @@ enum Activity
 	/** Normalized names a kill count message may use for this boss. */
 	private final String[] keys;
 
-	Activity(HiscoreSkill hiscore, String... aliases)
+	/**
+	 * A boss, named after its hiscores entry.
+	 */
+	Activity(String... aliases)
 	{
-		this.name = hiscore.getName();
+		HiscoreSkill hiscore = findHiscore(name());
+		this.name = hiscore != null ? hiscore.getName() : titleCase(name());
 		this.kind = Kind.KILL;
-		this.spriteId = hiscore.getSpriteId();
+		this.spriteId = hiscore != null ? hiscore.getSpriteId() : SpriteID.SideIcons.COMBAT;
 		this.countName = null;
 		this.keys = new String[aliases.length + 1];
 		for (int i = 0; i < aliases.length; i++)
 		{
 			keys[i] = normalize(aliases[i]);
 		}
-		keys[aliases.length] = normalize(hiscore.getName());
+		keys[aliases.length] = normalize(this.name);
 	}
 
 	Activity(String name, Kind kind, int spriteId, @Nullable String countName)
@@ -240,6 +249,62 @@ enum Activity
 	public String toString()
 	{
 		return name;
+	}
+
+	/**
+	 * The hiscores entry with this constant name, also allowing for a "THE_" prefix being added
+	 * or dropped. Null if the client doesn't have it.
+	 */
+	@Nullable
+	private static HiscoreSkill findHiscore(String constant)
+	{
+		for (HiscoreSkill skill : HiscoreSkill.values())
+		{
+			if (sameEntry(constant, skill.name()))
+			{
+				return skill;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Whether two constant names are the same entry, ignoring a leading "THE_".
+	 */
+	static boolean sameEntry(String a, String b)
+	{
+		return withoutThe(a).equals(withoutThe(b));
+	}
+
+	private static String withoutThe(String constant)
+	{
+		return constant.startsWith("THE_") ? constant.substring(4) : constant;
+	}
+
+	/**
+	 * The icon of a hiscores entry, or a generic one if the client doesn't have it.
+	 */
+	private static int hiscoreSprite(String constant)
+	{
+		HiscoreSkill skill = findHiscore(constant);
+		return skill != null && skill.getSpriteId() != -1 ? skill.getSpriteId() : SpriteID.SideIcons.COMBAT;
+	}
+
+	/**
+	 * "THE_ROYAL_TITANS" -> "The Royal Titans", for a boss the client's hiscores don't list.
+	 */
+	static String titleCase(String constant)
+	{
+		StringBuilder name = new StringBuilder();
+		for (String word : constant.toLowerCase(Locale.ROOT).split("_"))
+		{
+			if (name.length() > 0)
+			{
+				name.append(' ');
+			}
+			name.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+		}
+		return name.toString();
 	}
 
 	/**

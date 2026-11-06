@@ -88,6 +88,25 @@ public class GoalTest
 	}
 
 	@Test
+	public void hiscoreLookupSurvivesRenames()
+	{
+		// RuneLite renamed FRACTURED_ARCHIVE to THE_FRACTURED_ARCHIVE; either way round matches
+		assertTrue(Activity.sameEntry("FRACTURED_ARCHIVE", "THE_FRACTURED_ARCHIVE"));
+		assertTrue(Activity.sameEntry("THE_GAUNTLET", "GAUNTLET"));
+		assertTrue(Activity.sameEntry("ZULRAH", "ZULRAH"));
+		assertFalse(Activity.sameEntry("THE_GAUNTLET", "THE_CORRUPTED_GAUNTLET"));
+
+		// A boss the client doesn't list still gets a readable name
+		assertEquals("The Royal Titans", Activity.titleCase("THE_ROYAL_TITANS"));
+
+		// Every boss has a name to show and match, whatever the client's list holds
+		for (Activity activity : Activity.values())
+		{
+			assertFalse(activity.name(), activity.getName().isEmpty());
+		}
+	}
+
+	@Test
 	public void parseAmount()
 	{
 		assertEquals(Integer.valueOf(250_000), Goal.parseAmount("250,000"));
