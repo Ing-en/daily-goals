@@ -752,18 +752,23 @@ public class DailyGoalsPlugin extends Plugin
 			}
 			wanted.add(goal.getId());
 
+			GoalStatus status = status(goal.getId());
+			boolean checked = config.completedInfobox() == DailyGoalsConfig.CompletedInfobox.CHECKMARK
+				&& status != null && status.isComplete();
 			DailyGoalsInfoBox infoBox = infoBoxes.get(goal.getId());
 			if (infoBox == null)
 			{
-				infoBox = new DailyGoalsInfoBox(icon, this, config, goal.getId(), key);
+				infoBox = new DailyGoalsInfoBox(checked ? Checkmark.over(icon) : icon, this, config, goal.getId(), key);
+				infoBox.setChecked(checked);
 				infoBoxes.put(goal.getId(), infoBox);
 				infoBoxManager.addInfoBox(infoBox);
 			}
-			else if (!key.equals(infoBox.getIconTarget()))
+			else if (!key.equals(infoBox.getIconTarget()) || checked != infoBox.isChecked())
 			{
-				// The goal now counts something else; show its icon
-				infoBox.setImage(icon);
+				// The goal now counts something else, or was just reached or reset; show the right icon
+				infoBox.setImage(checked ? Checkmark.over(icon) : icon);
 				infoBox.setIconTarget(key);
+				infoBox.setChecked(checked);
 				infoBoxManager.updateInfoBoxImage(infoBox);
 			}
 		}

@@ -8,6 +8,7 @@ import net.runelite.client.ui.overlay.infobox.InfoBox;
 
 /**
  * Shows the XP or count left for one goal (or the percent done), or how far past it you are ("+10K").
+ * Once it's reached it can show just the icon, or a checkmark over it; see {@link DailyGoalsConfig#completedInfobox()}.
  */
 class DailyGoalsInfoBox extends InfoBox
 {
@@ -19,6 +20,11 @@ class DailyGoalsInfoBox extends InfoBox
 	@Getter
 	@Setter
 	private String iconTarget;
+
+	/** Whether the image shown is the icon with a checkmark drawn over it. */
+	@Getter
+	@Setter
+	private boolean checked;
 
 	DailyGoalsInfoBox(BufferedImage image, DailyGoalsPlugin plugin, DailyGoalsConfig config, String goalId, String iconTarget)
 	{
@@ -39,6 +45,10 @@ class DailyGoalsInfoBox extends InfoBox
 		}
 		// The Values setting: XP / count left, or percent done
 		boolean percent = config.valueFormat() == DailyGoalsConfig.ValueFormat.PERCENT;
+		if (status.isComplete() && config.completedInfobox() != DailyGoalsConfig.CompletedInfobox.TEXT)
+		{
+			return null;
+		}
 		if (status.getOver() > 0)
 		{
 			return "+" + (percent ? Formats.shortPercent(status.getOver(), status.getTarget()) : Formats.shortNumber(status.getOver()));

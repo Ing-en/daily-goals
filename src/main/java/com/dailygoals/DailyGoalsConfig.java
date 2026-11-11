@@ -169,6 +169,22 @@ public interface DailyGoalsConfig extends Config
 		}
 	}
 
+	@RequiredArgsConstructor
+	enum CompletedInfobox
+	{
+		TEXT("Done text"),
+		NO_TEXT("No text"),
+		CHECKMARK("Checkmark");
+
+		private final String label;
+
+		@Override
+		public String toString()
+		{
+			return label;
+		}
+	}
+
 	@ConfigSection(
 		name = "Reset",
 		description = "When goals start over and what carries over",
@@ -287,11 +303,24 @@ public interface DailyGoalsConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "completedInfobox",
+		name = "Completed infobox",
+		description = "What a goal's infobox shows once it's reached: the green Done (or +10K over) text,"
+			+ " just the icon, or a checkmark over the icon. The tooltip still has the numbers",
+		section = displaySection,
+		position = 3
+	)
+	default CompletedInfobox completedInfobox()
+	{
+		return CompletedInfobox.TEXT;
+	}
+
+	@ConfigItem(
 		keyName = "paceColors",
 		name = "Pace colours",
 		description = "Turn the progress bar amber when you're behind the pace needed to finish by the reset",
 		section = displaySection,
-		position = 3
+		position = 4
 	)
 	default boolean paceColors()
 	{
@@ -303,7 +332,7 @@ public interface DailyGoalsConfig extends Config
 		name = "Overlay top line",
 		description = "What the top line of each goal's overlay shows",
 		section = displaySection,
-		position = 4
+		position = 5
 	)
 	default DisplayLine overlayTopLine()
 	{
@@ -315,7 +344,7 @@ public interface DailyGoalsConfig extends Config
 		name = "Overlay bottom line",
 		description = "What the bottom line of each goal's overlay shows",
 		section = displaySection,
-		position = 5
+		position = 6
 	)
 	default DisplayLine overlayBottomLine()
 	{
@@ -327,7 +356,7 @@ public interface DailyGoalsConfig extends Config
 		name = "Notify when done",
 		description = "Send a notification when a goal is reached",
 		section = displaySection,
-		position = 6
+		position = 7
 	)
 	default Notification notifyComplete()
 	{
@@ -340,7 +369,7 @@ public interface DailyGoalsConfig extends Config
 		description = "Send a notification when a goal is half and three quarters done"
 			+ " (a chat message is posted either way when chat messages are on)",
 		section = displaySection,
-		position = 7
+		position = 8
 	)
 	default Notification notifyMilestones()
 	{
@@ -352,7 +381,7 @@ public interface DailyGoalsConfig extends Config
 		name = "Chat messages",
 		description = "Post a chat message at 50% / 75%, when a goal is reached and when goals reset",
 		section = displaySection,
-		position = 8
+		position = 9
 	)
 	default boolean chatMessages()
 	{

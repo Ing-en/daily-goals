@@ -45,6 +45,7 @@ In game, each goal can have:
 - **Show**: infoboxes, overlays or both.
 - **Values**: amounts as XP / count, or as a percentage of the goal. Applies to infoboxes and the overlay's Done, Left and Pace lines.
 - **Hide when complete**: hide the overlay, the infobox or both once a goal is reached.
+- **Completed infobox**: what a reached goal's infobox shows: the green Done (or +10K) text, just the icon, or a checkmark over the icon.
 - **Pace colours**: the progress bar turns amber when you're behind pace.
 - **Overlay lines**: Done, Left, Goal, Progress, XP/h, Done in or Pace.
 - **Notifications**: when a goal is done, and optionally at 50% / 75%.
